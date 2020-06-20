@@ -95,12 +95,14 @@ bool is_winner(std::vector<std::array<int,3> > &winning_moves, char player,
 	return game_over;
 }
 
-bool is_winning_board(std::vector<std::string> &board, std::vector<std::array<int,3> > &winning_moves) {
+bool is_winning_board(std::vector<std::string> &board, std::vector<std::array<int,3> > &winning_moves, int &winner) {
 	char p1 = 'X';
 	char p2 = 'O';
 	bool game_over = false;
 
+	if (is_winner(winning_moves, p1, game_over, board))
 	game_over = is_winner(winning_moves, p1, game_over, board);
+	winner = 1;
 	game_over = is_winner(winning_moves, p2, game_over, board);
 
 	return game_over;
